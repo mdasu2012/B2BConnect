@@ -60,4 +60,10 @@ public class RoleServiceImpl implements RoleService {
 		}
 	}
 
+	@Override
+	public void deleteROle(Long id) {
+		// TODO Auto-generated method stub
+		roleRepository.deleteById(id);
+	}
+
 }

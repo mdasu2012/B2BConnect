@@ -10,4 +10,6 @@ public interface UserService {
 
 	void verifyOtp(UserDto userDto);
 
+	void deleteUser(Long id);
+
 }

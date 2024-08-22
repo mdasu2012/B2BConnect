@@ -14,4 +14,6 @@ public interface LeadService {
 
 	void updateLead(Long id, LeadDto leadDto);
 
+	void deleteLead(Long id);
+
 }

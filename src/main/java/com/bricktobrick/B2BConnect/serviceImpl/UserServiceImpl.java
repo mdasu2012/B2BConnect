@@ -52,7 +52,7 @@ public class UserServiceImpl implements UserService {
 		UserAccount dbUser = userRepository.findByUsernameAndMobile(userDto.getUsername(), userDto.getMobile());
 
 		if (dbUser != null) {
-			String otp = otpBuilder.generateOtp(6);
+			String otp = otpBuilder.generateOtp(4);
 			dbUser.setOtp(otp);
 			userRepository.save(dbUser);
 
@@ -60,6 +60,8 @@ public class UserServiceImpl implements UserService {
 			userDto2.setUsername(dbUser.getUsername());
 			userDto2.setOtp(dbUser.getOtp());
 			userDto2.setRole(dbUser.getRole());
+			userDto2.setLoginType(dbUser.getLoginType());
+			userDto2.setId(dbUser.getId());
 		} else {
 			throw CommonException.createException(CommonExceptionMessage.NOT_FOUND, userDto.getUsername()+" user");
 		}
@@ -70,15 +72,22 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void verifyOtp(UserDto userDto) {
 		// TODO Auto-generated method stub
-		UserAccount dbUser = userRepository.findByUsernameAndMobile(userDto.getUsername(), userDto.getMobile());
-		if (dbUser != null) {
-			if (dbUser.getOtp() != userDto.getOtp()) {
+		UserAccount dbUser = userRepository.findByUsernameAndMobileAndOtp(userDto.getUsername(), userDto.getMobile(),userDto.getOtp());
+		if (dbUser == null) {
 				throw CommonException.createException(CommonExceptionMessage.INVALID_OTP);
-			}
 
-		} else {
-			throw CommonException.createException(CommonExceptionMessage.NOT_FOUND, userDto.getUsername()+" user");
 		}
+//		else {
+//			throw CommonException.createException(CommonExceptionMessage.NOT_FOUND, userDto.getUsername()+" user");
+//		}
 	}
 
+	@Override
+	public void deleteUser(Long id) {
+		// TODO Auto-generated method stub
+		userRepository.deleteById(id);
+	}
+
+	
+	
 }

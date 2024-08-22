@@ -1,6 +1,7 @@
 package com.bricktobrick.B2BConnect.entity;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
@@ -41,6 +42,10 @@ public class Lead implements Serializable{
 	private LeadSource leadSource;
 	
 	private LeadStatus leadStatus;
+	
+	private LocalDate createdDate;
+	
+	private String owner;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -142,6 +147,25 @@ public class Lead implements Serializable{
 	public void setLeadStatus(LeadStatus leadStatus) {
 		this.leadStatus = leadStatus;
 	}
+
+	public LocalDate getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(LocalDate createdDate) {
+		this.createdDate = createdDate;
+	}
+
+	public String getOwner() {
+		return owner;
+	}
+
+	public void setOwner(String owner) {
+		this.owner = owner;
+	}
+	
+	
+	
 
 
 }

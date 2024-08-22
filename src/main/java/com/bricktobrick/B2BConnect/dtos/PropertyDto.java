@@ -17,7 +17,7 @@ public class PropertyDto {
 	
 	private String guidelineValue;
 	
-	private PropertyType propertyType;
+	private String propertyType;
 	
 	private Long totalPlots;
 	
@@ -38,6 +38,7 @@ public class PropertyDto {
 	private Address address;
 	
 	private String propertyMap;
+	
 
 	public Long getId() {
 		return id;
@@ -79,11 +80,11 @@ public class PropertyDto {
 		this.guidelineValue = guidelineValue;
 	}
 
-	public PropertyType getPropertyType() {
+	public String getPropertyType() {
 		return propertyType;
 	}
 
-	public void setPropertyType(PropertyType propertyType) {
+	public void setPropertyType(String propertyType) {
 		this.propertyType = propertyType;
 	}
 
@@ -167,6 +168,4 @@ public class PropertyDto {
 		this.propertyMap = propertyMap;
 	}
 
-	
-	
 }

@@ -14,4 +14,6 @@ public interface PropertyService {
 
 	PropertyDto findProperty(Long id);
 
+	void deleteProperty(Long id);
+
 }

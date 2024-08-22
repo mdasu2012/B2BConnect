@@ -61,4 +61,10 @@ public class PropertyServiceImpl implements PropertyService {
 		return propertyDto;
 	}
 
+	@Override
+	public void deleteProperty(Long id) {
+		// TODO Auto-generated method stub
+		propertyRepository.deleteById(id);
+	}
+
 }

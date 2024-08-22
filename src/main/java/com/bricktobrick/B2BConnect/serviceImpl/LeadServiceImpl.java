@@ -1,5 +1,6 @@
 package com.bricktobrick.B2BConnect.serviceImpl;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,7 @@ public class LeadServiceImpl implements LeadService {
 	public void addLead(LeadDto leadDto) {
 		// TODO Auto-generated method stub
 		Lead lead = leadBuilder.convertToLeadModel(leadDto);
+		lead.setCreatedDate(LocalDate.now());
 		if (lead != null) {
 			leadRepository.save(lead);
 		}
@@ -59,6 +61,12 @@ public class LeadServiceImpl implements LeadService {
 				leadRepository.save(lead2);
 			}
 		}
+	}
+
+	@Override
+	public void deleteLead(Long id) {
+		// TODO Auto-generated method stub
+		leadRepository.deleteById(id);
 	}
 
 }

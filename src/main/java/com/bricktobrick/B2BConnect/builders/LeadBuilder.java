@@ -7,6 +7,8 @@ import org.springframework.stereotype.Component;
 
 import com.bricktobrick.B2BConnect.dtos.LeadDto;
 import com.bricktobrick.B2BConnect.entity.Lead;
+import com.bricktobrick.B2BConnect.entity.LeadSource;
+import com.bricktobrick.B2BConnect.entity.LeadStatus;
 
 @Component
 public class LeadBuilder {
@@ -21,11 +23,37 @@ public class LeadBuilder {
 		lead.setId(leadDto.getId());
 		lead.setIndustry(leadDto.getIndustry());
 		lead.setLastName(leadDto.getLastName());
-		lead.setLeadSource(leadDto.getLeadSource());
-		lead.setLeadStatus(leadDto.getLeadStatus());
+
+		if (leadDto.getLeadSource() != null) {
+
+			if (leadDto.getLeadSource().equals(LeadSource.COMPANYLEAD.getName())) {
+				lead.setLeadSource(LeadSource.COMPANYLEAD);
+			} else if (leadDto.getLeadSource().equals(LeadSource.OWNLEAD.getName())) {
+				lead.setLeadSource(LeadSource.OWNLEAD);
+			} else if (leadDto.getLeadSource().equals(LeadSource.SHAREDLEAD.getName())) {
+				lead.setLeadSource(LeadSource.SHAREDLEAD);
+			} else if (leadDto.getLeadSource().equals(LeadSource.COLDCALLLEAD.getName())) {
+				lead.setLeadSource(LeadSource.COLDCALLLEAD);
+			} else {
+				lead.setLeadSource(LeadSource.CPLEAD);
+			}
+		}
+		if (leadDto.getLeadStatus() != null) {
+			if ("COLD".equals(leadDto.getLeadStatus())) {
+				lead.setLeadStatus(LeadStatus.COLD);
+			} else if ("HOT".equals(leadDto.getLeadStatus())) {
+				lead.setLeadStatus(LeadStatus.HOT);
+			} else if ("WARM".equals(leadDto.getLeadStatus())) {
+				lead.setLeadStatus(LeadStatus.WARM);
+			} else if ("CLOSE".equals(leadDto.getLeadStatus())) {
+				lead.setLeadStatus(LeadStatus.CLOSE);
+			}
+		}
+
 		lead.setMiddleName(leadDto.getMiddleName());
 		lead.setMobile(leadDto.getMobile());
 		lead.setOccupation(leadDto.getOccupation());
+		lead.setOwner(leadDto.getOwner());
 		return lead;
 	}
 
@@ -39,11 +67,28 @@ public class LeadBuilder {
 		leadDto.setId(lead.getId());
 		leadDto.setIndustry(lead.getIndustry());
 		leadDto.setLastName(lead.getLastName());
-		leadDto.setLeadSource(lead.getLeadSource());
-		leadDto.setLeadStatus(lead.getLeadStatus());
+		leadDto.setLeadSource(lead.getLeadSource().getName());
+		
+		if (lead.getLeadStatus() != null) {
+			
+			if ("COLD".equals(lead.getLeadStatus().name())) {
+				leadDto.setLeadStatus("COLD");
+			} else if ("HOT".equals(lead.getLeadStatus().name())) {
+				leadDto.setLeadStatus("HOT");
+			} else if ("WARM".equals(lead.getLeadStatus().name())) {
+				leadDto.setLeadStatus("WARM.");
+			} else if ("CLOSE".equals(lead.getLeadStatus().name())) {
+				leadDto.setLeadStatus("CLOSE");
+			}
+		}
+		
 		leadDto.setMiddleName(lead.getMiddleName());
 		leadDto.setMobile(lead.getMobile());
 		leadDto.setOccupation(lead.getOccupation());
+		if (lead.getCreatedDate() != null) {
+			leadDto.setCreatedDate(lead.getCreatedDate().toString());
+		}
+		leadDto.setOwner(lead.getOwner());
 
 		return leadDto;
 	}
@@ -69,12 +114,15 @@ public class LeadBuilder {
 		leadDto.setId(lead.getId());
 		leadDto.setIndustry(lead.getIndustry());
 		leadDto.setLastName(lead.getLastName());
-		leadDto.setLeadSource(lead.getLeadSource());
-		leadDto.setLeadStatus(lead.getLeadStatus());
+		leadDto.setLeadSource(lead.getLeadSource().getName());
+		leadDto.setLeadStatus(lead.getLeadStatus().name());
 		leadDto.setMiddleName(lead.getMiddleName());
 		leadDto.setMobile(lead.getMobile());
 		leadDto.setOccupation(lead.getOccupation());
-
+		if (lead.getCreatedDate() != null) {
+			leadDto.setCreatedDate(lead.getCreatedDate().toString());
+		}
+		leadDto.setOwner(lead.getOwner());
 		return leadDto;
 	}
 
@@ -87,12 +135,37 @@ public class LeadBuilder {
 		lead.setId(leadDto.getId());
 		lead.setIndustry(leadDto.getIndustry());
 		lead.setLastName(leadDto.getLastName());
-		lead.setLeadSource(leadDto.getLeadSource());
-		lead.setLeadStatus(leadDto.getLeadStatus());
+		if (leadDto.getLeadSource() != null) {
+			if (leadDto.getLeadSource().equals(LeadSource.COMPANYLEAD.getName())) {
+				lead.setLeadSource(LeadSource.COMPANYLEAD);
+			} else if (leadDto.getLeadSource().equals(LeadSource.OWNLEAD.getName())) {
+				lead.setLeadSource(LeadSource.OWNLEAD);
+			} else if (leadDto.getLeadSource().equals(LeadSource.SHAREDLEAD.getName())) {
+				lead.setLeadSource(LeadSource.SHAREDLEAD);
+			} else if (leadDto.getLeadSource().equals(LeadSource.COLDCALLLEAD.getName())) {
+				lead.setLeadSource(LeadSource.COLDCALLLEAD);
+			} else {
+				lead.setLeadSource(LeadSource.CPLEAD);
+			}
+		}
+
+		if (leadDto.getLeadStatus() != null) {
+			
+			if ("COLD".equals(leadDto.getLeadStatus())) {
+				lead.setLeadStatus(LeadStatus.COLD);
+			} else if ("HOT".equals(leadDto.getLeadStatus())) {
+				lead.setLeadStatus(LeadStatus.HOT);
+			} else if ("WARM".equals(leadDto.getLeadStatus())) {
+				lead.setLeadStatus(LeadStatus.WARM);
+			} else if ("CLOSE".equals(leadDto.getLeadStatus())) {
+				lead.setLeadStatus(LeadStatus.CLOSE);
+			}
+		}
+
 		lead.setMiddleName(leadDto.getMiddleName());
 		lead.setMobile(leadDto.getMobile());
 		lead.setOccupation(leadDto.getOccupation());
-
+		lead.setOwner(leadDto.getOwner());
 		return lead;
 	}
 }

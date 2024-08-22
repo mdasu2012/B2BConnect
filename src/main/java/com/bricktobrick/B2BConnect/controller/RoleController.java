@@ -3,6 +3,8 @@ package com.bricktobrick.B2BConnect.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,6 +18,7 @@ import com.bricktobrick.B2BConnect.services.RoleService;
 
 @RestController
 @RequestMapping(value = "/role")
+@CrossOrigin
 public class RoleController {
 	
 	@Autowired
@@ -40,4 +43,10 @@ public class RoleController {
 	public void updateRole(@PathVariable(value = "id") Long id, @RequestBody Role role) {
 		 roleService.updateRole(id, role);
 	}
+	
+	@DeleteMapping(value = "/{id}")
+	public void deleteROle(@PathVariable(value = "id") Long id) {
+		 roleService.deleteROle(id);
+	}
+
 }

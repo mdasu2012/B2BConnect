@@ -28,6 +28,22 @@ public class Role implements Serializable {
 	
 	private UserAccount user;
 	
+	
+	
+	public Role(Long id, String roleName, String roleDisplayName, String description, UserAccount user) {
+		super();
+		this.id = id;
+		this.roleName = roleName;
+		this.roleDisplayName = roleDisplayName;
+		this.description = description;
+		this.user = user;
+	}
+
+	
+	public Role() {
+	}
+
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	public Long getId() {

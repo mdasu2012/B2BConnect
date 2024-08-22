@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 
 import com.bricktobrick.B2BConnect.dtos.PropertyDto;
 import com.bricktobrick.B2BConnect.entity.Property;
+import com.bricktobrick.B2BConnect.entity.PropertyType;
 
 @Component
 public class PropertyBuilder {
@@ -25,7 +26,15 @@ public class PropertyBuilder {
 		newProperty.setPropertyDescription(propertyDto.getPropertyDescription());
 		newProperty.setPropertyMap(propertyDto.getPropertyMap());
 		newProperty.setPropertyName(propertyDto.getPropertyName());
-		newProperty.setPropertyType(propertyDto.getPropertyType());
+		
+		if(propertyDto.getPropertyType().equals("PLOT")) {
+			newProperty.setPropertyType(PropertyType.PLOT);
+		} else if(propertyDto.getPropertyType().equals("FLAT")) {
+			newProperty.setPropertyType(PropertyType.FLAT);
+		} else if(propertyDto.getPropertyType().equals("COMMERCIAL")) {
+			newProperty.setPropertyType(PropertyType.COMMERCIAL);
+		} 
+		
 		newProperty.setReraNumber(propertyDto.getReraNumber());
 		newProperty.setStartDate(propertyDto.getStartDate());
 		newProperty.setStatus(propertyDto.getStatus());
@@ -48,7 +57,15 @@ public class PropertyBuilder {
 		newProperty.setPropertyDescription(property.getPropertyDescription());
 		newProperty.setPropertyMap(property.getPropertyMap());
 		newProperty.setPropertyName(property.getPropertyName());
-		newProperty.setPropertyType(property.getPropertyType());
+		
+		if(property.getPropertyType().name().equals("PLOT")) {
+			newProperty.setPropertyType(PropertyType.PLOT.name());
+		} else if(property.getPropertyType().name().equals("FLAT")) {
+			newProperty.setPropertyType(PropertyType.FLAT.name());
+		} else if(property.getPropertyType().name().equals("COMMERCIAL")) {
+			newProperty.setPropertyType(PropertyType.COMMERCIAL.name());
+		} 
+		
 		newProperty.setReraNumber(property.getReraNumber());
 		newProperty.setStartDate(property.getStartDate());
 		newProperty.setStatus(property.getStatus());
@@ -82,7 +99,15 @@ public class PropertyBuilder {
 		propertyDto.setPropertyDescription(property.getPropertyDescription());
 		propertyDto.setPropertyMap(property.getPropertyMap());
 		propertyDto.setPropertyName(property.getPropertyName());
-		propertyDto.setPropertyType(property.getPropertyType());
+		
+		if(property.getPropertyType().name().equals("PLOT")) {
+			propertyDto.setPropertyType(PropertyType.PLOT.name());
+		} else if(property.getPropertyType().name().equals("FLAT")) {
+			propertyDto.setPropertyType(PropertyType.FLAT.name());
+		} else if(property.getPropertyType().name().equals("COMMERCIAL")) {
+			propertyDto.setPropertyType(PropertyType.COMMERCIAL.name());
+		} 
+
 		propertyDto.setReraNumber(property.getReraNumber());
 		propertyDto.setStartDate(property.getStartDate());
 		propertyDto.setStatus(property.getStatus());
@@ -104,7 +129,16 @@ public class PropertyBuilder {
 		property.setPropertyDescription(propertyDto.getPropertyDescription());
 		property.setPropertyMap(propertyDto.getPropertyMap());
 		property.setPropertyName(propertyDto.getPropertyName());
-		property.setPropertyType(propertyDto.getPropertyType());
+
+		if(propertyDto.getPropertyType().equals("PLOT")) {
+			property.setPropertyType(PropertyType.PLOT);
+		} else if(propertyDto.getPropertyType().equals("FLAT")) {
+			property.setPropertyType(PropertyType.FLAT);
+		} else if(propertyDto.getPropertyType().equals("COMMERCIAL")) {
+			property.setPropertyType(PropertyType.COMMERCIAL);
+		} 
+		
+		
 		property.setReraNumber(propertyDto.getReraNumber());
 		property.setStartDate(propertyDto.getStartDate());
 		property.setStatus(propertyDto.getStatus());

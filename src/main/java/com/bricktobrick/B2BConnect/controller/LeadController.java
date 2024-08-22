@@ -3,6 +3,8 @@ package com.bricktobrick.B2BConnect.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,6 +18,7 @@ import com.bricktobrick.B2BConnect.services.LeadService;
 
 @RestController
 @RequestMapping(value = "/lead")
+@CrossOrigin
 public class LeadController {
 	
 	@Autowired
@@ -41,6 +44,11 @@ public class LeadController {
 		leadService.updateLead(id, leadDto);
 	}
 	
+	@DeleteMapping(value = "/{id}")
+	public void deleteLead(@PathVariable(value = "id") Long id) {
+		 leadService.deleteLead(id);
+	}
+
 	
 
 }

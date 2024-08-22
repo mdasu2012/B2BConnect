@@ -26,9 +26,13 @@ public class LeadDto {
 
 	private String industry;
 
-	private LeadSource leadSource;
+	private String leadSource;
 
-	private LeadStatus leadStatus;
+	private String leadStatus;
+	
+	private String createdDate;
+	
+	private String owner;
 
 	public Long getId() {
 		return id;
@@ -110,20 +114,40 @@ public class LeadDto {
 		this.industry = industry;
 	}
 
-	public LeadSource getLeadSource() {
+	public String getLeadSource() {
 		return leadSource;
 	}
 
-	public void setLeadSource(LeadSource leadSource) {
+	public void setLeadSource(String leadSource) {
 		this.leadSource = leadSource;
 	}
 
-	public LeadStatus getLeadStatus() {
+	public String getLeadStatus() {
 		return leadStatus;
 	}
 
-	public void setLeadStatus(LeadStatus leadStatus) {
+	public void setLeadStatus(String leadStatus) {
 		this.leadStatus = leadStatus;
 	}
+
+	public String getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(String createdDate) {
+		this.createdDate = createdDate;
+	}
+
+	public String getOwner() {
+		return owner;
+	}
+
+	public void setOwner(String owner) {
+		this.owner = owner;
+	}
+
+	
+	
+
 
 }
