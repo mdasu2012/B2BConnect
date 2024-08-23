@@ -13,45 +13,41 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.bricktobrick.B2BConnect.entity.Role;
-import com.bricktobrick.B2BConnect.services.RoleService;
+import com.bricktobrick.B2BConnect.dtos.EmployeeDto;
+import com.bricktobrick.B2BConnect.services.EmployeeService;
 
 @RestController
-@RequestMapping(value = "/role")
+@RequestMapping(value = "/employee")
 @CrossOrigin
-public class RoleController {
+public class EmployeeController {
 	
 	@Autowired
-	private RoleService roleService;
+	private EmployeeService employeeService;
 	
 	@PostMapping(value = "/add")
-	public void addRole(@RequestBody Role role) {
-		roleService.addRole(role);
+	public void addEmployee(@RequestBody EmployeeDto employeeDto) {
+		employeeService.addEmployee(employeeDto);
 	}
 	
 	@GetMapping(value = "/all")
-	public List<Role> allRole() {
-		return roleService.allRole();
-	}
-	
-	@GetMapping(value = "/all/{department}")
-	public List<Role> allRoleByDepartment(@PathVariable(value = "department") String department) {
-		return roleService.allRoleByDepartment(department);
+	public List<EmployeeDto> findAllEmployess() {
+		return employeeService.findAllEmployess();
 	}
 	
 	@GetMapping(value = "/{id}")
-	public Role findRole(@PathVariable(value = "id") Long id) {
-		return roleService.findRole(id);
+	public EmployeeDto findEmployee(@PathVariable(value = "id") Long id) {
+		return employeeService.findEmployee(id);
 	}
 
 	@PutMapping(value = "/{id}")
-	public void updateRole(@PathVariable(value = "id") Long id, @RequestBody Role role) {
-		 roleService.updateRole(id, role);
+	public void updateEmployee(@PathVariable(value = "id") Long id, @RequestBody EmployeeDto employeeDto) {
+		employeeService.updateEmployee(id,employeeDto);
 	}
 	
 	@DeleteMapping(value = "/{id}")
-	public void deleteROle(@PathVariable(value = "id") Long id) {
-		 roleService.deleteROle(id);
+	public void deleteEmployee(@PathVariable(value = "id") Long id) {
+		employeeService.deleteEmployee(id);
 	}
+
 
 }

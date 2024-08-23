@@ -5,6 +5,7 @@ import java.io.Serializable;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -25,11 +26,11 @@ public class Role implements Serializable {
 	private String roleDisplayName;
 
 	private String description;
-	
+
+	private Department department;
+
 	private UserAccount user;
-	
-	
-	
+
 	public Role(Long id, String roleName, String roleDisplayName, String description, UserAccount user) {
 		super();
 		this.id = id;
@@ -39,10 +40,8 @@ public class Role implements Serializable {
 		this.user = user;
 	}
 
-	
 	public Role() {
 	}
-
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -88,10 +87,13 @@ public class Role implements Serializable {
 		this.user = user;
 	}
 
-	@Override
-	public String toString() {
-		return "Role [id=" + id + ", roleName=" + roleName + ", roleDisplayName=" + roleDisplayName + ", description="
-				+ description + "]";
+	@Enumerated
+	public Department getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(Department department) {
+		this.department = department;
 	}
 
 }

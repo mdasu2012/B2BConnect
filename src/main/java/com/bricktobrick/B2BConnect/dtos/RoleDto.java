@@ -9,6 +9,8 @@ public class RoleDto {
 	private String roleDisplayName;
 
 	private String description;
+	
+	private String department;
 
 	public Long getId() {
 		return id;
@@ -40,6 +42,14 @@ public class RoleDto {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public String getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(String department) {
+		this.department = department;
 	}
 	
 	

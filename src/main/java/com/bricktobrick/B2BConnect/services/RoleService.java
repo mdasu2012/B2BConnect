@@ -16,4 +16,6 @@ public interface RoleService {
 
 	void deleteROle(Long id);
 
+	List<Role> allRoleByDepartment(String department);
+
 }

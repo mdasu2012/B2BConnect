@@ -37,22 +37,18 @@ public class B2BConnectApplication implements CommandLineRunner {
 			role.setRoleDisplayName("ADMIN");
 			role.setRoleName("Admin");
 			role.setDescription("Admin");
-
 			roleRepository.save(role);
+			
 			
 			UserAccount user = new UserAccount();
 			user.setCreatedDate(LocalDate.now());
 			user.setUsername("admin");
 			user.setPassword("admin");
-			user.setMobile("8500053423");
+			user.setMobile("9100004898");
 			user.setRole(role);
 			user.setLoginType(LoginType.WEB);
 			userRepository.save(user);
 		}
-		
-		
-		
-		
 
 	}
 

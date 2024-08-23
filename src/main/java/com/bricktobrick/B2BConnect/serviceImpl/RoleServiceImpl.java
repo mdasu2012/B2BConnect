@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.bricktobrick.B2BConnect.builders.RoleBuilder;
 import com.bricktobrick.B2BConnect.common.CommonException;
 import com.bricktobrick.B2BConnect.common.CommonExceptionMessage;
+import com.bricktobrick.B2BConnect.entity.Department;
 import com.bricktobrick.B2BConnect.entity.Role;
 import com.bricktobrick.B2BConnect.repository.RoleRepository;
 import com.bricktobrick.B2BConnect.services.RoleService;
@@ -51,7 +52,7 @@ public class RoleServiceImpl implements RoleService {
 		// TODO Auto-generated method stub
 		Optional<Role> dbRole = roleRepository.findById(id);
 		if (dbRole.isPresent()) {
-			if (dbRole.get().getId() == role.getId()) {
+			if (dbRole.get().getId().equals(role.getId())) {
 				Role updatedRole = roleBuilder.updatedRole(dbRole.get(), role);
 				if (updatedRole != null) {
 					roleRepository.save(updatedRole);
@@ -64,6 +65,22 @@ public class RoleServiceImpl implements RoleService {
 	public void deleteROle(Long id) {
 		// TODO Auto-generated method stub
 		roleRepository.deleteById(id);
+	}
+
+	@Override
+	public List<Role> allRoleByDepartment(String department) {
+		// TODO Auto-generated method stub
+		Department department2=null;
+		if(department.equals("Finance")) {
+			department2 = (Department.Finance);
+		}else if(department.equals("Marketing")) {
+			department2 =(Department.Marketing);
+		}else if(department.equals("Sales")) {
+			department2 =(Department.Sales);
+		}else if(department.equals("HR")) {
+			department2 =(Department.HR);
+		} 
+		return roleRepository.findByDepartment(department2);
 	}
 
 }

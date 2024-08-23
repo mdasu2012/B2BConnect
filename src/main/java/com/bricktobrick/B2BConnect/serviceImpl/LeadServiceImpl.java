@@ -56,7 +56,7 @@ public class LeadServiceImpl implements LeadService {
 		// TODO Auto-generated method stub
 		Lead lead = leadRepository.findById(id).get();
 		if (lead != null) {
-			if (lead.getId() == leadDto.getId()) {
+			if (lead.getId().equals(leadDto.getId())) {
 				Lead lead2 = leadBuilder.convertDtoToModel(lead, leadDto);
 				leadRepository.save(lead2);
 			}
